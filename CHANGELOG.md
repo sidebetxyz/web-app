@@ -1,8 +1,13 @@
 # CHANGELOG.md
 
-## [1.0.1] - 2023-05-06
+## [1.2.0] - 2023-06-20
 
-- Dependencies update
+- Fix issue with Google Fonts
+
+## [1.1.0] - 2023-05-06
+
+- Update dependencies
+- Improve modal video component
 
 ## [1.0.0] - 2023-04-11
 

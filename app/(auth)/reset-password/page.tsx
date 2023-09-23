@@ -1,29 +1,39 @@
 export const metadata = {
-  title: 'Reset Password - Neon',
+  title: 'Reset Password - Simple',
   description: 'Page description',
 }
 
 export default function ResetPassword() {
   return (
-    <>
-      <div className="mb-8">
-        <h1 className="h2 font-uncut-sans mb-4">Reset password</h1>
-        <p className="text-gray-400">Enter your email address. If an account exists, you'll receive an email with a password reset link soon.</p>
-      </div>
-      {/* Form */}
-      <form>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm text-gray-400 font-medium mb-1" htmlFor="email">Email</label>
-            <input id="email" className="form-input py-2 w-full" type="email" required />
+    <section className="bg-gradient-to-b from-gray-100 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+
+          {/* Page header */}
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+            <h1 className="h1 mb-4">Let's get you back up on your feet</h1>
+            <p className="text-xl text-gray-600">Enter the email address you used when you signed up for your account, and we'll email you a link to reset your password.</p>
           </div>
+
+          {/* Form */}
+          <div className="max-w-sm mx-auto">
+            <form>
+              <div className="flex flex-wrap -mx-3 mb-4">
+                <div className="w-full px-3">
+                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
+                  <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mt-6">
+                <div className="w-full px-3">
+                  <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Send reset link</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
         </div>
-        <div className="mt-6">
-          <button className="btn-sm text-white bg-gradient-to-t from-blue-600 to-blue-400 hover:to-blue-500 w-full shadow-lg group">
-            Reset Password <span className="tracking-normal text-blue-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-          </button>
-        </div>
-      </form>    
-    </>
+      </div>
+    </section>
   )
 }

@@ -1,54 +1,90 @@
-import Link from 'next/link'
+'use client'
 
-export default function Header({ nav = true }: {
-  nav?: boolean
-}) {
+import { useState, useEffect } from 'react'
+
+import Link from 'next/link'
+import Logo from './logo'
+import Dropdown from '@/components/utils/dropdown'
+import MobileMenu from './mobile-menu'
+
+export default function Header() {
+
+  const [top, setTop] = useState<boolean>(true)
+
+  // detect whether user has scrolled the page down by 10px
+  const scrollHandler = () => {
+    window.pageYOffset > 10 ? setTop(false) : setTop(true)
+  }  
+
+  useEffect(() => {
+    scrollHandler()
+    window.addEventListener('scroll', scrollHandler)
+    return () => window.removeEventListener('scroll', scrollHandler)
+  }, [top])
+
   return (
-    <header className="absolute w-full z-30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <header className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${!top ? 'bg-white backdrop-blur-sm shadow-lg' : ''}`}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
+
           {/* Site branding */}
           <div className="shrink-0 mr-4">
-            {/* Logo */}
-            <Link className="block" href="/" aria-label="Cruip">
-              <svg className="w-8 h-8" viewBox="0 0 32 32" xmlnsXlink="http://www.w3.org/1999/xlink">
-                <defs>
-                  <radialGradient cx="50%" cy="89.845%" fx="50%" fy="89.845%" r="108.567%" gradientTransform="matrix(-.00915 -.82755 .99996 -.00757 -.394 1.319)" id="logo1-b">
-                    <stop stopColor="#3B82F6" stopOpacity=".64" offset="0%" />
-                    <stop stopColor="#F472B6" stopOpacity=".876" offset="100%" />
-                  </radialGradient>
-                  <radialGradient cx="50%" cy="89.845%" fx="50%" fy="89.845%" r="108.567%" gradientTransform="matrix(-.00915 -.82755 .99996 -.00757 -.394 1.319)" id="logo1-d">
-                    <stop stopColor="#3B82F6" stopOpacity=".64" offset="0%" />
-                    <stop stopColor="#D375C2" stopOpacity=".833" offset="50.358%" />
-                    <stop stopColor="#FBCFE8" stopOpacity=".876" offset="100%" />
-                  </radialGradient>
-                  <path d="M12 32c8-6.915 12-12.582 12-17 0-6.627-5.373-12-12-12S0 8.373 0 15c0 4.418 4 10.085 12 17Z" id="logo1-a" />
-                  <path d="M20 29c8-6.915 12-12.582 12-17 0-6.627-5.373-12-12-12S8 5.373 8 12c0 4.418 4 10.085 12 17Z" id="logo1-c" />
-                </defs>
-                <g fill="none" fillRule="evenodd">
-                  <use fill="url(#logo1-b)" opacity=".64" transform="matrix(1 0 0 -1 0 35)" xlinkHref="#logo1-a" />
-                  <use fill="url(#logo1-d)" opacity=".961" xlinkHref="#logo1-c" />
-                </g>
-              </svg>
-            </Link>
+            <Logo />
           </div>
 
           {/* Desktop navigation */}
-          {nav &&
-            <nav className="flex grow">
-              {/* Desktop sign in links */}
-              <ul className="flex grow justify-end flex-wrap items-center">
+          <nav className="hidden md:flex md:grow">
+
+            {/* Desktop menu links */}
+            <ul className="flex grow justify-end flex-wrap items-center">
+              <li>
+                <Link href="/pricing" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">Pricing</Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">About us</Link>
+              </li>
+              <li>
+                <Link href="/tutorials" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">
+                  Tutorials
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">Blog</Link>
+              </li>
+              {/* 1st level: hover */}
+              <Dropdown title="Resources">
+                {/* 2nd level: hover */}
                 <li>
-                  <Link className="font-medium text-gray-400 hover:text-blue-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="/signin">Sign in</Link>
+                  <Link href="/documentation" className="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight">Documentation</Link>
                 </li>
-                <li className="ml-3">
-                  <Link className="btn-sm text-white bg-gradient-to-t from-blue-600 to-blue-400 hover:to-blue-500 w-full shadow-lg group" href="#0">
-                    Get Started <span className="tracking-normal text-blue-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
-                  </Link>
+                <li>
+                  <Link href="/support" className="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight">Support center</Link>
                 </li>
-              </ul>
-            </nav>
-          }
+                <li>
+                  <Link href="/404" className="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight">404</Link>
+                </li>
+              </Dropdown>
+            </ul>
+
+            {/* Desktop sign in links */}
+            <ul className="flex grow justify-end flex-wrap items-center">
+              <li>
+                <Link href="/signin" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Sign in</Link>
+              </li>
+              <li>
+                <Link href="/signup" className="btn-sm text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3">
+                  <span>Sign up</span>
+                  <svg className="w-3 h-3 fill-current text-gray-400 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />
+                  </svg>
+                </Link>
+              </li>
+            </ul>
+
+          </nav>
+
+          <MobileMenu />
+
         </div>
       </div>
     </header>
