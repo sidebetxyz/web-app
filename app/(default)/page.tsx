@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Home - Simple',
-  description: 'Page description',
+  title: 'Side₿et: Elevate Your Gaming Experience',
+  description: 'Side₿et revolutionizes gaming by introducing peer-to-peer wagering, enabling seamless integration for developers to infuse betting within games. Dive into an enhanced gaming realm where trust, speed, and low transaction fees are paramount, all powered by Bitcoin and groundbreaking blockchain technologies.',
 }
 
 import Hero from '@/components/hero-home'
