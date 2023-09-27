@@ -37,13 +37,13 @@ export default function Header() {
           <nav className="hidden md:flex md:grow">
 
             {/* Desktop menu links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
-              <li>
+{/*             <ul className="flex grow justify-end flex-wrap items-center">
+ */}              {/* <li>
                 <Link href="/pricing" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">Home</Link>
               </li>
               <li>
                 <Link href="/about" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">About us</Link>
-              </li>
+              </li> */}
               {/* <li>
                 <Link href="/tutorials" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">
                   Tutorials
@@ -53,9 +53,9 @@ export default function Header() {
                 <Link href="/blog" className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out">Blog</Link>
               </li> */}
               {/* 1st level: hover */}
-              <Dropdown title="Resources">
+              {/* <Dropdown title="Resources"> */}
                 {/* 2nd level: hover */}
-                <li>
+                {/* <li>
                   <Link href="/documentation" className="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight">Documentation</Link>
                 </li>
                 <li>
@@ -63,15 +63,15 @@ export default function Header() {
                 </li>
                 <li>
                   <Link href="/404" className="font-medium text-sm text-gray-600 hover:text-gray-900 flex py-2 px-5 leading-tight">404</Link>
-                </li>
-              </Dropdown>
-            </ul>
-
+                </li> */}
+              {/* </Dropdown> */}
+{/*             </ul>
+ */}
             {/* Desktop sign in links */}
             <ul className="flex grow justify-end flex-wrap items-center">
-              <li>
+              {/* <li>
                 <Link href="#" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Contact Us</Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="#" className="btn-sm text-gray-200 bg-gray-900 hover:bg-gray-800 ml-3">
                   <span>Join Waitlist</span>
