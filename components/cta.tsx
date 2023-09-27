@@ -17,7 +17,7 @@ export default function Cta() {
 
               {/* CTA button */}
               <div>
-                <a className="btn text-blue-600 bg-gradient-to-r from-blue-100 to-white" href="#0">Get Early Access</a>
+                <a className="btn text-blue-600 bg-gradient-to-r from-blue-100 to-white" href="https://blocksurvey.io/sidebet-waitlist-signup-PgpG3ZHeQWme0Bc.yLDpVw">Get Early Access</a>
               </div>
 
             </div>
